@@ -1,0 +1,148 @@
+[global_config]
+  broadcast_default = off
+  dbus = False
+  enabled_plugins = CustomCommandsMenu, APTURLHandler, LaunchpadCodeURLHandler, LaunchpadBugURLHandler
+  handle_size = 10
+  inactive_color_offset = 0.858974358974
+  suppress_multiple_term_dialog = True
+  title_hide_sizetext = True
+  title_transmit_bg_color = "#2172b7"
+[keybindings]
+  broadcast_all = <Primary><Alt>1
+  broadcast_group = <Primary><Alt>2
+  go_down = <Primary>j
+  go_left = <Primary>h
+  go_right = <Primary>l
+  go_up = <Primary>k
+  page_down_half = None
+  page_up_half = None
+  resize_left = <Primary><Shift>h
+  resize_right = <Primary><Shift>l
+  split_horiz = F3
+  split_vert = F2
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_10 = <Alt>minus
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 2500, 1200
+      type = Window
+  [[dev]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 57:24
+      size = 3383, 1416
+      type = Window
+    [[[child1]]]
+      labels = None, None
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 1691
+      type = HPaned
+    [[[child5]]]
+      order = 1
+      parent = child1
+      position = 1453
+      type = HPaned
+    [[[terminal3]]]
+      command = 'cd /home/diederichs/projects/global-monitoring-backend; bash -c "git status; bash"'
+      order = 0
+      parent = child2
+      profile = DevGit
+      type = Terminal
+    [[[terminal4]]]
+      command = 'cd /home/diederichs/projects/gm-cdb; bash -c "git status; bash"'
+      order = 1
+      parent = child2
+      profile = DevGit
+      type = Terminal
+    [[[terminal6]]]
+      command = 'cd /home/diederichs/projects/gm-def; bash -c "git status; bash"'
+      order = 0
+      parent = child5
+      profile = DevGit
+      type = Terminal
+    [[[terminal7]]]
+      command = 'cd /home/diederichs/projects/redaktions-php; bash -c "git status; bash"'
+      order = 1
+      parent = child5
+      profile = DevGit
+      type = Terminal
+  [[jswatch]]
+    [[[child0]]]
+      order = 0
+      parent = ""
+      position = 57:24
+      size = 3383, 1416
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 1691
+      type = HPaned
+    [[[terminal2]]]
+      command = 'cd /home/diederichs/git/a3mobile.com/gm-cdb; bash -c "ant build-js; ant build-js-watch; bash" '
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+    [[[terminal3]]]
+      command = 'cd /home/diederichs/git/a3mobile.com/redaktions-php; bash -c "ant build-js-dynedit; ant build-js-watch-dynedit;bash" '
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+[plugins]
+[profiles]
+  [[default]]
+    cursor_color = "#bfbfbf"
+    font = Roboto Mono 11
+    foreground_color = "#ffffff"
+    scrollback_infinite = True
+    split_to_group = True
+    use_system_font = False
+    word_chars = "-A-Za-z0-9,./?%&#:_~"
+  [[DevGit]]
+    cursor_color = "#ffffff"
+    font = Roboto Mono 13
+    foreground_color = "#ffffff"
+    scroll_on_keystroke = False
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False
+    word_chars = "-A-Za-z0-9,./?%&#_"
+  [[build--watch]]
+    cursor_color = "#ffffff"
+    font = Monospace 12
+    foreground_color = "#ffffff"
+    use_system_font = False
+  [[latin1]]
+    cursor_color = "#aaaaaa"
+    encoding = ISO-8859-1
+  [[live]]
+    background_color = "#fbc2c2"
+    cursor_color = "#060606"
+    font = Monospace 11
+    foreground_color = "#060606"
+    use_system_font = False
+  [[staging]]
+    background_color = "#ffffdd"
+    font = Monospace 11
+    foreground_color = "#000000"
+    use_system_font = False
