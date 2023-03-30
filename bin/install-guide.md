@@ -16,3 +16,6 @@
   * AdBlock
 * Install cool stuff
   * ChatGPT command line tool
+* Add github_personal ssh key
+  * Key comes from USB stick
+  * Password comes from Android password manager

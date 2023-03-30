@@ -1,0 +1,6 @@
+#!/bin/bash
+
+packages=("nvim" "terminator" "pass" "hamster-time-tracker" "wmctrl")
+
+for package in 
+

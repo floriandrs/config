@@ -1,0 +1,65 @@
+#!/bin/bash
+resolution=$(xrandr --current | grep '*' | perl -lpe 's/\s+(\d+x\d+).*/\1/')
+width_total=$(echo $resolution | perl -lpe 's/(\d+)x.*/\1/')
+height=$(echo $resolution | perl -lpe 's/\d+x(\d+)/\1/')
+launcher_width=0
+spacer_width=50
+do_maximize_vert=1
+
+width=$(($width_total - $launcher_width))
+width_half=$(( $width / 2 ))
+width_narrow=1500
+width_narrow_half=$(( $width_narrow / 2 ))
+width_third=$(( $width_total / 3 ))
+width_quarter=$(( $width_total / 4 ))
+width_eight=$(( $width_total / 8 ))
+width_two_thirds=$(( $width_third * 2 ))
+width_three_quarters=$(( $width_quarter * 3 ))
+
+
+x_offset=$launcher_width
+y_offset=0
+win_width=1
+win_height=$height
+
+if [[ $1 == "left" ]]; then
+    win_width=$width_two_thirds
+elif [[ $1 == "left_half" ]]; then
+    win_width=$width_half
+elif [[ $1 == "right" ]]; then
+    win_width=$width_two_thirds
+    x_offset=$(( $x_offset + $width_third ))
+elif [[ $1 == "right_half" ]]; then
+    win_width=$width_half
+    x_offset=$(( $x_offset + $width_half ))
+elif [[ $1 == "console" ]]; then
+    win_width=$width_three_quarters
+    win_height=$(( $win_height - $spacer_width ))
+    x_offset=$(( $x_offset + $width_quarter - $spacer_width ))
+    y_offset=$spacer_width
+    do_maximize_vert=0
+elif [[ $1 == "slim_centered" ]]; then
+    win_width=$width_narrow
+    win_height=$(( $win_height - $spacer_width - $spacer_width ))
+    x_offset=$(( $x_offset + 950 ))
+    y_offset=$spacer_width
+    do_maximize_vert=0
+elif [[ $1 == "small_centered" ]]; then
+    win_width=$width_narrow
+    win_height=$(( $win_height - $spacer_width - $spacer_width - 200 ))
+    x_offset=$(( $x_offset + 950 ))
+    y_offset=$(( $spacer_width + $spacer_width ))
+    do_maximize_vert=0
+else 
+    win_width=$width_three_quarters
+    x_offset=$width_eight
+fi
+
+if [[ $do_maximize_vert == 1 ]]; then
+    wmctrl -r :ACTIVE: -b add,maximized_vert;
+else 
+    wmctrl -r :ACTIVE: -b remove,maximized_vert;
+fi
+
+wmctrl -r :ACTIVE: -e 0,$x_offset,$y_offset,$win_width,$win_height;
+
